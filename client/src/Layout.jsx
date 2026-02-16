@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router";
 import NavBar from "./Components/NavBar";
-
+import Footer from "./Components/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 
 function Layout() {
@@ -22,7 +22,7 @@ function Layout() {
         </motion.div>
       </AnimatePresence>
 
-
+      <Footer />
     </>
   );
 }
