@@ -10,7 +10,7 @@ import GoogleStore from '../assets/icone/GooglePlay.svg'
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-zinc-800 text-zinc-300">
+    <div className="w-full bg-zinc-800 text-zinc-300">
       <div className="max-w-7xl mx-auto px-6 py-5">
 
         {/* GRID */}
@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
 
       </div>
-    </footer>
+    </div>
   );
 };
 
