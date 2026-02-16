@@ -2,7 +2,7 @@ import { FiSearch } from "react-icons/fi";
 import { FaRegHeart, FaRegUser, FaUser } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
 import { useState } from "react";
-import AccountMenuCard from "./accountMenuCard";
+import AccountMenuCard from "./AccountMenuCard";
 import { NavLink } from "react-router-dom";
 
 
