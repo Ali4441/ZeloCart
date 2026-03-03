@@ -1,94 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import WishlistCard from "./WishlistCard";
 import RibbonTag from "./RibbonTag";
 import Button from "./Button";
-const Cards = [
-  {
-    id: 1,
-    title: "IPS LCD Gaming Monitor",
-    image: "./image/imgCamra.png",
-    price: 400,
-    oldPrice: 500,
-    discount: 59,
-    rating: 5,
-    reviews: 99,
-  },
-  {
-    id: 2,
-    title: "RGB Mechanical Keyboard",
-    image: "./image/keyboard.png",
-    price: 150,
-    oldPrice: 200,
-    discount: 25,
-    rating: 4,
-    reviews: 120,
-  },
-  {
-    id: 3,
-    title: "IPS LCD Gaming Monitor",
-    image: "./image/laptop.png",
-    price: 200,
-    oldPrice: 500,
-    discount: 79,
-    rating: 5,
-    reviews: 91,
-  },
-  {
-    id: 4,
-    title: "IPS LCD Gaming Monitor",
-    image: "./image/gamingRmote.png",
-    price: 800,
-    oldPrice: 700,
-    discount: 200,
-    rating: 5,
-    reviews: 98,
-  },
 
-  {
-    id: 1,
-    title: "IPS LCD Gaming Monitor",
-    image: "./image/imgCamra.png",
-    price: 400,
-    oldPrice: 500,
-    discount: 59,
-    rating: 5,
-    reviews: 99,
-  },
-  {
-    id: 2,
-    title: "RGB Mechanical Keyboard",
-    image: "./image/keyboard.png",
-    price: 150,
-    oldPrice: 200,
-    discount: 25,
-    rating: 4,
-    reviews: 120,
-  },
-  {
-    id: 3,
-    title: "IPS LCD Gaming Monitor",
-    image: "./image/laptop.png",
-    price: 200,
-    oldPrice: 500,
-    discount: 79,
-    rating: 5,
-    reviews: 91,
-  },
-  {
-    id: 4,
-    title: "IPS LCD Gaming Monitor",
-    image: "./image/gamingRmote.png",
-    price: 800,
-    oldPrice: 700,
-    discount: 200,
-    rating: 5,
-    reviews: 98,
-  },
-
-];
 
 
 const FirstCard = ({ TodayTag }) => {
@@ -97,6 +14,20 @@ const FirstCard = ({ TodayTag }) => {
   const scrollRef = useRef(null);
   const [viewAll, setViewAll] = useState(false);
   const [cardWidth, setCardWidth] = useState(0);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:1000/api/products");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   // Calculate dynamic card width (4.5 cards visible)
   useEffect(() => {
@@ -111,7 +42,7 @@ const FirstCard = ({ TodayTag }) => {
     window.addEventListener("resize", updateWidth);
 
     return () => window.removeEventListener("resize", updateWidth);
-  }, [viewAll]); // 👈 important
+  }, [viewAll]);
 
   const scrollLeft = () => {
     if (!scrollRef.current) return;
@@ -130,8 +61,9 @@ const FirstCard = ({ TodayTag }) => {
       behavior: "smooth",
     });
   };
-  const visibleProducts = viewAll ? Cards : Cards.slice(0, 6);
-
+  const visibleProducts = viewAll
+    ? products
+    : products.slice(0, 6);
 
 
 
@@ -189,8 +121,8 @@ const FirstCard = ({ TodayTag }) => {
         >
           {visibleProducts.map((product) => (
             <div
-              onClick={() => navigate(`/ProductDetailPage/${product.id}`)}
-              key={product.id}
+              key={product._id}
+              onClick={() => navigate(`/ProductDetailPage/${product._id}`)}
               className={
                 !viewAll
                   ? "shrink-0 min-w-full sm:min-w-[50%] md:min-w-[25%]"

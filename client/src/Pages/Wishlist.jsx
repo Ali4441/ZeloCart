@@ -1,7 +1,6 @@
 import { useState } from "react";
 import WishlistCard from "../Components/WishlistCard";
 import RibbonTag from "../Components/RibbonTag";
-import Footer from '../Components/Footer'
 import ScrollToTop from "../Components/ScrollToTop";
 const products = [
   {

@@ -2,7 +2,8 @@ import { Outlet, useLocation } from "react-router";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import { AnimatePresence, motion } from "framer-motion";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Layout() {
   const location = useLocation();
 
@@ -23,6 +24,7 @@ function Layout() {
       </AnimatePresence>
 
       <Footer />
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }

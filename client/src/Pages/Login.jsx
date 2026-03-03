@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import ScrollToTop from '../Components/ScrollToTop';
-
+import axios from "axios";
+import { toast } from "react-toastify";
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -40,14 +41,26 @@ const Login = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
       // Add login logic here
+
+
+      try {
+        const res = await axios.post("http://localhost:1000/api/auth/login", formData);
+
+        toast.success(res.data.message);
+        navigate('/account');
+      } catch (err) {
+        console.error(err.response ? err.response.data : err);
+        toast.error(err.response?.data?.message || "Something went wrong");
+
+      }
       console.log('Login data:', formData);
-      navigate('/account');
+
     } else {
       setErrors(newErrors);
     }

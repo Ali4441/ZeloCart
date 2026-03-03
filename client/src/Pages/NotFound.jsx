@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ScrollToTop from '../Components/ScrollToTop';
+import Sample from '../Components/sample';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -38,6 +39,9 @@ const NotFound = () => {
           </div>
         </div>
       </div>
+
+
+      <Sample />
     </>
   );
 };

@@ -29,7 +29,7 @@ const NewArrivalSection = ({
               alt="PlayStation"
               className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent"></div>
 
             <div className="absolute bottom-8 left-8 text-white">
               <h3 className="text-3xl font-semibold mb-2">

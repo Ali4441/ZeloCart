@@ -1,7 +1,8 @@
 // Contact.jsx
 import React, { useState } from 'react';
 import ScrollToTop from '../Components/ScrollToTop';
-
+import axios from "axios";
+import { toast } from "react-toastify";
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,11 +17,27 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add contact form submission logic here
     console.log('Contact form:', formData);
+    try {
+      const res = await axios.post("http://localhost:1000/api/auth/contact", formData);
+      console.log(res.data);
+      toast.success(res.data.message);
+
+    } catch (err) {
+      console.error(err.response ? err.response.data : err);
+      toast.error(err.response?.data?.message || "Something went wrong");
+    }
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    })
     setSubmitted(true);
+
     setTimeout(() => setSubmitted(false), 5000);
   };
 

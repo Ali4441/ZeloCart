@@ -1,6 +1,5 @@
 
 import HeroCard from "../Components/HeroCard";
-import NavBar from "../Components/NavBar";
 import RibbonTag from "../Components/RibbonTag";
 import FlashCountdown from "../Components/FlashCountdown";
 import CardSlider from "../Components/CardSlider";
@@ -17,6 +16,7 @@ import FirstCard from "../Components/FirstCard";
 import NewArrivalSection from "../Components/NewArrivalSection";
 import SearviceCard from "../Components/SearviceCard";
 import ScrollToTop from "../Components/ScrollToTop";
+
 const stats = [
   {
     icon: IoCameraOutline,
@@ -59,7 +59,9 @@ const Home = () => {
       <ScrollToTop />
       <div className=" max-w-6xl mx-auto px-4 space-y-8 md:space-y-8 my-10">
         <HeroCard />
-        <div className="w-full flex  items-end gap-6 md:gap-10 flex-row">
+
+        {/* first card container */}
+        <div className="w-full flex  items-end gap-6  md:gap-10 flex-row">
           <div className="flex flex-col gap-2 md:gap-3">
             <RibbonTag title="Today's" textColor="text-red-400" />
             <span className="text-2xl md:text-1xl font-bold">Flash Sales</span>
@@ -67,7 +69,7 @@ const Home = () => {
           <FlashCountdown />
         </div>
         <CardSlider />
-
+        {/* -------end ---- */}
 
         <div className="flex flex-col gap-2 md:gap-3">
           <RibbonTag title="Categories" textColor="text-red-400" />
@@ -75,6 +77,7 @@ const Home = () => {
         </div>
         <StatsCards stats={stats} isHome="true" />
         <div className="w-full h-[0.5px] bg-zinc-300 my-10"></div>
+        {/* new LaunchBanner */}
         <LaunchBanner
           category="Audio"
           title="Enhance Your Music Experience"
@@ -84,6 +87,7 @@ const Home = () => {
           buttonLink="/product/speaker"
           launchDate="2026-03-01T00:00:00"
         />
+        {/* second cart container */}
         <FirstCard TodayTag="Today'sExplore Our Products" />
 
 

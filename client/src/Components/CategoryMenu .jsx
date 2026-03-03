@@ -58,7 +58,7 @@ const CategoryMenu = () => {
                   setOpenIndex(openIndex === index ? null : index)
                 }
                 className="w-full flex justify-between items-center px-3 py-2
-                           hover:bg-gray-100 rounded-md font-medium"
+                           hover:bg-gray-300 rounded-md font-medium"
               >
                 {item.name}
 

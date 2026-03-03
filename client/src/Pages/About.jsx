@@ -3,8 +3,6 @@ import AboutHero from '../Components/AboutHero'
 import SearviceCard from "../Components/SearviceCard";
 import StatsCards from "../Components/StatsCards";
 import TeamSection from "../Components/TeamSection";
-import NavBar from '../Components/NavBar';
-import Footer from '../Components/Footer';
 import { Store, DollarSign, ShoppingBag, Wallet, } from "lucide-react";
 import ScrollToTop from '../Components/ScrollToTop';
 const stats = [

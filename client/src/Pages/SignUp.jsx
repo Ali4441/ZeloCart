@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import ScrollToTop from '../Components/ScrollToTop';
-
+import axios from "axios";
+import { toast } from "react-toastify";
 const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -56,14 +57,23 @@ const SignUp = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
       // Add signup logic here
-      console.log('Signup data:', formData);
-      navigate('/account');
+
+      try {
+        const res = await axios.post("http://localhost:1000/api/auth/register", formData);
+
+        toast.success(res.data.message);
+
+      } catch (err) {
+        console.error(err.response ? err.response.data : err);
+        toast.error(err.response?.data?.message || "Something went wrong");
+      }
+      navigate('/Login');
     } else {
       setErrors(newErrors);
     }

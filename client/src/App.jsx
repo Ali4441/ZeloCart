@@ -16,6 +16,7 @@ import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Contact from "./Pages/Contact";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

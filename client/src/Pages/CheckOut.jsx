@@ -2,8 +2,6 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { MdSecurity } from "react-icons/md";
 import TotalPriceCard from '../Components/TotalPriceCard';
 import PaymentCard from '../Components/PaymentCard';
-import NavBar from "../Components/NavBar";
-import Footer from "../Components/Footer";
 import ScrollToTop from "../Components/ScrollToTop";
 
 const CheckOut = () => {
